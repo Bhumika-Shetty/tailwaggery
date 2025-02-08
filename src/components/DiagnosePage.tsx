@@ -7,12 +7,14 @@ import { useToast } from "@/components/ui/use-toast";
 const DiagnosePage = () => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [diagnosisResult, setDiagnosisResult] = useState<string | null>(null);
   const { toast } = useToast();
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
       setSelectedImage(file);
+      setDiagnosisResult(null); // Clear previous results when new image is uploaded
     }
   };
 
@@ -32,15 +34,16 @@ const DiagnosePage = () => {
     await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate processing
     setIsAnalyzing(false);
     
+    setDiagnosisResult("Your pet appears to be healthy! Regular check-ups are recommended.");
     toast({
       title: "Analysis Complete",
-      description: "Your pet appears to be healthy! Regular check-ups are recommended.",
+      description: "Scroll down to see the results",
     });
   };
 
   return (
     <div className="p-8 animate-fade-in">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto space-y-8">
         <div className="bg-white rounded-xl shadow-sm p-6">
           <h2 className="text-3xl font-semibold text-gray-800 mb-2">Let's get Luna diagnosed</h2>
           <p className="text-gray-600 mb-6">Upload a clear photo of Luna for a quick health assessment</p>
@@ -97,6 +100,15 @@ const DiagnosePage = () => {
             </Button>
           </form>
         </div>
+
+        {diagnosisResult && (
+          <div className="bg-white rounded-xl shadow-sm p-6 animate-fade-in">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">Diagnosis Results</h3>
+            <div className="p-4 bg-primary/10 rounded-lg">
+              <p className="text-gray-700">{diagnosisResult}</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
