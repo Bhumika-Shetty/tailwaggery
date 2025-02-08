@@ -7,8 +7,8 @@ const navigationItems = [
   { icon: Home, label: "Home", path: "/", isEnabled: true },
   { icon: MessageSquare, label: "Ask about food", path: "/food", isEnabled: false },
   { icon: Stethoscope, label: "Diagnose diseases", path: "/diagnose", isEnabled: true },
-  { icon: Activity, label: "Monitor health", path: "/monitor", isEnabled: false },
-  { icon: ShoppingCart, label: "Shopping", path: "/shopping", isEnabled: false },
+  { icon: Activity, label: "Monitor health", path: "/monitor", isEnabled: true },
+  { icon: ShoppingCart, label: "Shopping", path: "/shopping", isEnabled: true },
 ];
 
 const Sidebar = () => {
