@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 const navigationItems = [
   { icon: Home, label: "Home", path: "/", isEnabled: true },
-  { icon: MessageSquare, label: "Ask about food", path: "/food", isEnabled: false },
+  { icon: MessageSquare, label: "Ask about food", path: "/food", isEnabled: true },
   { icon: Stethoscope, label: "Diagnose diseases", path: "/diagnose", isEnabled: true },
   { icon: Activity, label: "Monitor health", path: "/monitor", isEnabled: true },
   { icon: ShoppingCart, label: "Shopping", path: "/shopping", isEnabled: true },
